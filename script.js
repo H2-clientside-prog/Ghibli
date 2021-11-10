@@ -33,72 +33,21 @@ function createSidebarColumn() {
     return sidebarCol;
 }
 
-function createPeopleListOfMovie() {
-    const moviePeopleListElement = document.createElement('div');
-    moviePeopleListElement.setAttribute('class', 'col-3');
+function createList(title) {
+    const listElement = document.createElement('div');
+    listElement.setAttribute('class', 'col-3');
 
-    const peopleListTitleElement = document.createElement('h4');
-    peopleListTitleElement.setAttribute('class', 'text-center');
-    peopleListTitleElement.textContent = 'People';
-
-    const unorderedListElement = document.createElement('ul');
-    unorderedListElement.setAttribute('class', 'list-group list-group-flush');
-    unorderedListElement.setAttribute('id', 'list-of-people');
-
-    moviePeopleListElement.appendChild(peopleListTitleElement);
-    moviePeopleListElement.appendChild(unorderedListElement);
-    return moviePeopleListElement;
-}
-
-function createSpeciesListOfMovie() {
-    const movieSpeciesListElement = document.createElement('div');
-    movieSpeciesListElement.setAttribute('class', 'col-3');
-
-    const speciesListTitleElement = document.createElement('h4');
-    speciesListTitleElement.setAttribute('class', 'text-center');
-    speciesListTitleElement.textContent = 'Species';
+    const listTitleElement = document.createElement('h4');
+    listTitleElement.setAttribute('class', 'text-center');
+    listTitleElement.textContent = title.charAt(0).toUpperCase() + title.slice(1);
 
     const unorderedListElement = document.createElement('ul');
     unorderedListElement.setAttribute('class', 'list-group list-group-flush');
-    unorderedListElement.setAttribute('id', 'list-of-species');
+    unorderedListElement.setAttribute('id', `list-of-${title}`);
 
-    movieSpeciesListElement.appendChild(speciesListTitleElement);
-    movieSpeciesListElement.appendChild(unorderedListElement);
-    return movieSpeciesListElement;
-}
-
-function createLocationsListOfMovie() {
-    const movieLocationListElement = document.createElement('div');
-    movieLocationListElement.setAttribute('class', 'col-3');
-
-    const locationListTitleElement = document.createElement('h4');
-    locationListTitleElement.setAttribute('class', 'text-center');
-    locationListTitleElement.textContent = 'Locations';
-
-    const unorderedListElement = document.createElement('ul');
-    unorderedListElement.setAttribute('class', 'list-group list-group-flush');
-    unorderedListElement.setAttribute('id', 'list-of-locations');
-
-    movieLocationListElement.appendChild(locationListTitleElement);
-    movieLocationListElement.appendChild(unorderedListElement);
-    return movieLocationListElement;
-}
-
-function createVehiclesListOfMovie() {
-    const movieVehicleListElement = document.createElement('div');
-    movieVehicleListElement.setAttribute('class', 'col-3');
-
-    const vehicleListTitleElement = document.createElement('h4');
-    vehicleListTitleElement.setAttribute('class', 'text-center');
-    vehicleListTitleElement.textContent = 'Vehicles';
-
-    const unorderedListElement = document.createElement('ul');
-    unorderedListElement.setAttribute('class', 'list-group list-group-flush');
-    unorderedListElement.setAttribute('id', 'list-of-vehicles');
-
-    movieVehicleListElement.appendChild(vehicleListTitleElement);
-    movieVehicleListElement.appendChild(unorderedListElement);
-    return movieVehicleListElement;
+    listElement.appendChild(listTitleElement);
+    listElement.appendChild(unorderedListElement);
+    return listElement;
 }
 
 function createMovieContentColumn() {
@@ -135,10 +84,6 @@ function createMovieContentColumn() {
     RTScoreTextElement.setAttribute('class', 'text-muted');    
     RTScoreTextElement.setAttribute('id', 'rt-score-text');
 
-    const movieRTScoreTextElement1 = document.createElement('p');
-    movieRTScoreTextElement1.setAttribute('class', 'fw-bold');    
-    movieRTScoreTextElement1.setAttribute('id', 'movie-tomatoes-text');
-
     const movieRTScoreElement = document.createElement('div');
     movieRTScoreElement.setAttribute('class', 'tomatoerow');    
     movieRTScoreElement.setAttribute('id', 'movie-tomatoes');    
@@ -154,10 +99,10 @@ function createMovieContentColumn() {
     const movieDetailsListRow = document.createElement('div');
     movieDetailsListRow.setAttribute('class', 'row');
 
-    const moviePeopleListElement = createPeopleListOfMovie();
-    const movieSpeciesListElement = createSpeciesListOfMovie();
-    const movieLocationListElement = createLocationsListOfMovie();
-    const movieVehiclesListElement = createVehiclesListOfMovie();
+    const moviePeopleListElement = createList('people'); // createPeopleListOfMovie();
+    const movieSpeciesListElement = createList('species'); //  createSpeciesListOfMovie();
+    const movieLocationListElement = createList('locations'); //  createLocationsListOfMovie();
+    const movieVehiclesListElement = createList('vehicles'); //  createVehiclesListOfMovie();
 
     movieContentColumnElement.appendChild(movieOriginalTitleElement);
     movieContentColumnElement.appendChild(movieSubtitleElement);
@@ -167,9 +112,6 @@ function createMovieContentColumn() {
     movieContentColumnElement.appendChild(releaseDateTextElement);
     movieContentColumnElement.appendChild(runningTimeTextElement);
     movieContentColumnElement.appendChild(RTScoreTextElement);
-    // movieContentColumnElement.appendChild(movieRTScoreTextElement);
-    // movieRTScoreTextElement.appendChild(movieRTScoreTextElement1);
-
     movieContentColumnElement.appendChild(movieRTScoreElement);
     movieContentColumnElement.appendChild(movieDetailsListRow);
     movieDetailsListRow.appendChild(moviePeopleListElement);
