@@ -70,6 +70,14 @@
     transform: translate3D(0, -2px, 0);
   }
 
+  #director-text,
+  #producer-text,
+  #release-date-text,
+  #running-time-text {
+    padding: 0;
+    margin: 0;
+  }
+
   /* p {
     padding: 0 2.5rem 2.5rem;
     margin: 0;

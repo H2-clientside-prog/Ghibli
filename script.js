@@ -115,9 +115,25 @@ function createMovieContentColumn() {
     const movieDescriptionElement = document.createElement('p');
     movieDescriptionElement.setAttribute('id', 'movie-description');
 
-    const movieRTScoreTextElement = document.createElement('div');
-    movieRTScoreTextElement.setAttribute('class', 'tomatoerow');    
-    movieRTScoreTextElement.setAttribute('id', 'movie-tomatoes-text-container');
+    const directorTextElement = document.createElement('p');
+    directorTextElement.setAttribute('class', 'text-muted');    
+    directorTextElement.setAttribute('id', 'director-text');
+
+    const producerTextElement = document.createElement('p');
+    producerTextElement.setAttribute('class', 'text-muted');    
+    producerTextElement.setAttribute('id', 'producer-text');
+
+    const releaseDateTextElement = document.createElement('p');
+    releaseDateTextElement.setAttribute('class', 'text-muted');    
+    releaseDateTextElement.setAttribute('id', 'release-date-text');
+
+    const runningTimeTextElement = document.createElement('p');
+    runningTimeTextElement.setAttribute('class', 'text-muted');    
+    runningTimeTextElement.setAttribute('id', 'running-time-text');
+
+    const RTScoreTextElement = document.createElement('div');
+    RTScoreTextElement.setAttribute('class', 'text-muted');    
+    RTScoreTextElement.setAttribute('id', 'rt-score-text');
 
     const movieRTScoreTextElement1 = document.createElement('p');
     movieRTScoreTextElement1.setAttribute('class', 'fw-bold');    
@@ -146,8 +162,13 @@ function createMovieContentColumn() {
     movieContentColumnElement.appendChild(movieOriginalTitleElement);
     movieContentColumnElement.appendChild(movieSubtitleElement);
     movieContentColumnElement.appendChild(movieDescriptionElement);
-    movieContentColumnElement.appendChild(movieRTScoreTextElement);
-    movieRTScoreTextElement.appendChild(movieRTScoreTextElement1);
+    movieContentColumnElement.appendChild(directorTextElement);
+    movieContentColumnElement.appendChild(producerTextElement);
+    movieContentColumnElement.appendChild(releaseDateTextElement);
+    movieContentColumnElement.appendChild(runningTimeTextElement);
+    movieContentColumnElement.appendChild(RTScoreTextElement);
+    // movieContentColumnElement.appendChild(movieRTScoreTextElement);
+    // movieRTScoreTextElement.appendChild(movieRTScoreTextElement1);
 
     movieContentColumnElement.appendChild(movieRTScoreElement);
     movieContentColumnElement.appendChild(movieDetailsListRow);
@@ -247,9 +268,21 @@ function createModalBodyDiv(movie) {
     const movieDescriptionElement = modalBodyElement.querySelector('#movie-description');
     movieDescriptionElement.textContent = movie.description;
 
+    const directorTextElement = modalBodyElement.querySelector('#director-text');
+    directorTextElement.textContent = `Instructed by ${movie.director}`;
+
+    const producerTextElement = modalBodyElement.querySelector('#producer-text');
+    producerTextElement.textContent = `Produced by ${movie.producer}`;
+    
+    const releaseDateTextElement = modalBodyElement.querySelector('#release-date-text');
+    releaseDateTextElement.textContent = `Release Date: ${movie.release_date}`;
+    
+    const runningTimeTextElement = modalBodyElement.querySelector('#running-time-text');
+    runningTimeTextElement.textContent = `Running Time: ${movie.running_time} minutes`;
+    
     const numTomatoes = movie.rt_score / 20.0;
-    const RTTextScoreElement = modalBodyElement.querySelector('#movie-tomatoes-text');
-    RTTextScoreElement.textContent = `Rotten Tomatoes score (${movie.rt_score}): ${movie.rt_score} / 100 = ${movie.rt_score} / 20 = ${numTomatoes} = ${Math.ceil(numTomatoes)} tomatoes`;
+    const RTScoreTextElement = modalBodyElement.querySelector('#rt-score-text');
+    RTScoreTextElement.textContent = `Rotten Tomatoes score: ${movie.rt_score} (${numTomatoes}/5)`;
     displayTomatoScore(numTomatoes, modalBodyElement);
 
     createListOfArray(movie, 'people', modalBodyElement);
